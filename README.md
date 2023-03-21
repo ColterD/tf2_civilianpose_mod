@@ -6,7 +6,9 @@ https://forums.alliedmods.net/showthread.php?p=2764469#post2764469
 ### Install
 
 ∙ Download smx from releases or directory.
+
 ∙ Add it to your addons/sourcemod/plugins directory.
+
 ∙ Load/reload plugin or restart/reload map
 
 ### Usage
