@@ -5,12 +5,13 @@ https://forums.alliedmods.net/showthread.php?p=2764469#post2764469
 
 ### Install
 
-download smx from releases or directory 
-put to addons/sourcemod/plugins directory
+∙ Download smx from releases or directory.
+∙ Add it to your addons/sourcemod/plugins directory.
+∙ Load/reload plugin or restart/reload map
 
 ### Usage
 
-type `!civ` or `!tpose` in chat
+∙ Type `!civ` or `!tpose` in chat
 
 ### 2.0 Changes
 
