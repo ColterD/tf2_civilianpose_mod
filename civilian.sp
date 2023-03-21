@@ -38,21 +38,21 @@ public Action Command_Civ(int client, int args) {
 
     if (isCivilian[client]) {
         if (GetConVarInt(cv_self_notification)) {
-            PrintToConsole(client, "You are no longer a civilian!");
-            PrintToConsole(client, "Respawn to receive your weapons!");
+            PrintToChat(client, "You are no longer a civilian!");
+            PrintToChat(client, "Go to a locker or respawn to receive your weapons!");
         }
         isCivilian[client] = false;
     } else {
         if (GetConVarInt(cv_self_notification)) {
-            PrintToConsole(client, "You are now a civilian!");
-            PrintToConsole(client, "Go to a locker or type the command again to be normal!");
+            PrintToChat(client, "You are now a civilian!");
+            PrintToChat(client, "Go to a locker or type the command again to be normal!");
         }
 
         isCivilian[client] = true;
 
         for (int i = 0; i < 4; i++) {
             int itemHandle = GetPlayerWeaponSlot(client, i);
-            if (view_as<int>(itemHandle) != view_as<int>(INVALID_HANDLE)) {
+            if (view_as<int>(itemHandle) > view_as<int>(INVALID_HANDLE)) {
                 RemovePlayerItem(client, itemHandle);
             }
         }
