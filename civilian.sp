@@ -21,6 +21,9 @@ public void OnPluginStart() {
 
     // Create the ConVar without generating a configuration file
     cv_self_notification = CreateConVar("civilianpose_self_notification", "1", "Enable/Disable self-notification when a player becomes a civilian. 0 = Disable, 1 = Enable", _, true, 0.0, true, 1.0);
+    
+    // Hook the OnPlayerSpawn event
+    HookEvent("player_spawn", Event_OnPlayerSpawn);
 }
 
 public Action Command_Civ(int client, int args) {
@@ -59,4 +62,16 @@ public Action Command_Civ(int client, int args) {
     }
 
     return Plugin_Handled;
+}
+
+public void Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroadcast) {
+    int client = GetClientOfUserId(event.GetInt("userid"));
+
+    if (isCivilian[client]) {
+        isCivilian[client] = false;
+
+        if (GetConVarInt(cv_self_notification)) {
+            PrintToChat(client, "You are no longer a civilian!");
+        }
+    }
 }
