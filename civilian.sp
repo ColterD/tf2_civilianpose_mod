@@ -51,7 +51,10 @@ public Action Command_Civ(int client, int args) {
         isCivilian[client] = true;
 
         for (int i = 0; i < 4; i++) {
-            RemovePlayerItem(client, GetPlayerWeaponSlot(client, i));
+            int itemHandle = GetPlayerWeaponSlot(client, i);
+            if (view_as<int>(itemHandle) != view_as<int>(INVALID_HANDLE)) {
+                RemovePlayerItem(client, itemHandle);
+            }
         }
     }
 
